@@ -1,0 +1,48 @@
+<!-- <nav class="navbar navbar-expand-md navbar-dark bg-info"> -->
+<nav class="navbar navbar-expand-md navbar-light bg-info">
+    <a class="navbar-brand title" href="#">Search It!</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+        aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+
+        <ul class="navbar-nav mr-auto">
+            <!-- <tr *ngFor="let item of categorias">
+                <li class="nav-item" routerLinkActive="active"></li>
+                <a class="nav-link" [routerLink]="['/item.categoria']"> {{item.categoria}}</a>
+            </tr> -->
+
+            
+
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['/computacion']">Computación</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['/electrodomestico']">Electrodomésticos</a>
+            </li>
+
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['/electronicos']">Electrónicos</a>
+            </li>
+
+            <!-- <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['/home']">Categoria4</a>
+            </li> -->
+
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+
+            <button style="margin: 5px; width: 140px;" type="button" class="btn btn-dark">Iniciar Sesión</button>
+            <button style="margin: 5px; width: 140px;" type="button" class="btn btn-dark">Registrarse</button>
+            <!-- <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"><br>
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>    
+        <span class="sr-only">(current)</span> -->
+        </form>
+        <div>
+            <input type="text"  #txt placeholder="Search" >
+            <button (click)="getText(txt.value)" class="btn-secondary my-2 my-sm-0" >Search</button>   
+        </div>
+    </div>
+</nav>

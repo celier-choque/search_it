@@ -1,0 +1,168 @@
+<div class="container">
+    <h1>Nuevo Producto</h1>
+
+    <div class="card">
+        <div class="card-body text-dark">
+            <h5 class="card-title">Datos del Producto</h5>
+
+            <form [formGroup]="form1">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6 style="color:cadetblue;">campos obligatorios (*)</h6>
+                        <label for="inputEmail4">Nombre*</label>
+                        <input #nombre formControlName="nombre" class="form-control" id="inputEmail4" pattern="">
+                        <div class="alert alert-danger"
+                            *ngIf="form1.get('nombre').touched && form1.get('nombre').invalid">
+                            <!-- <div *ngIf="form1.get('nombre') === null">nombre es requerido.</div> -->
+                            <div *ngIf="form1.get('nombre').errors.required">nombre es requerido.</div>
+                            <div *ngIf="form1.get('nombre').errors.pattern">caracteres especiales no permitidos.</div>
+                        </div>
+
+                        <label for="inputEmail4">Marca*</label>
+                        <input #marca formControlName="marca" class="form-control" id="inputEmail4">
+                        <div class="alert alert-danger"
+                            *ngIf="form1.get('marca').touched && form1.get('marca').invalid">
+                            <div *ngIf="form1.get('marca').errors.required">marca es requerido.</div>
+                            <div *ngIf="form1.get('marca').errors.pattern">caracteres especiales no permitidos.</div>
+                        </div>
+
+                        <label for="inputEmail4">Categoría*</label>
+                        <!-- <label class="mr-sm-2" for="inlineFormCustomSelect">Preference</label> -->
+                        <select #tipo class="custom-select mr-sm-2" formControlName="tipo" id="inlineFormCustomSelect">
+                            
+                            <option value="computacion">computación</option>
+                            <option value="electrodomestico">electrodomestico</option>
+                            <option value="electronicos">electronicos</option>
+                        </select>
+                        <!-- <div class="alert alert-danger" *ngIf="form1.get('tipo').touched && form1.get('tipo').invalid"></div> -->
+                        <!-- <input #tipo formControlName="tipo" class="form-control" id="inputEmail4"> -->
+                        <div class="alert alert-danger" *ngIf="form1.get('tipo').touched && form1.get('tipo').invalid">
+                            <div *ngIf="form1.get('tipo').errors.required">Categoria es requerido.</div>
+                            <div *ngIf="form1.get('tipo').errors.minlength">otro mensaje aqui</div>
+                        </div>
+
+                        <!-- <label for="inputEmail4">Codigo</label>
+                        <input #codigo formControlName="codigo" class="form-control" id="inputEmail4">
+                        <div class="alert alert-danger"
+                            *ngIf="form1.get('codigo').touched && form1.get('codigo').invalid">
+                            <div *ngIf="form1.get('codigo').errors.required">codigo es requerido.</div>
+                            <div *ngIf="form1.get('codigo').errors.pattern">caracteres especiales no permitidos.</div>
+                        </div> -->
+
+                        <label for="inputEmail4">Garantía</label>
+                        <div class="row">
+
+                            <!-- <div class="col medio">
+                                <label>Si</label>
+                                <input type="radio" value="si"><br>
+                            </div> -->
+                            <div class="col">
+                                <input #garantia formControlName="garantia" type="number" min="1" max="36" class="form-control" id="inputEmail4"
+                                    placeholder="meses">
+
+                                <div class="alert alert-danger"
+                                    *ngIf="form1.get('garantia').touched && form1.get('garantia').invalid">
+                                    <div *ngIf="form1.get('garantia').errors.pattern">garantia invalida</div>
+                                </div>
+                            </div>
+                            <!-- <div class="col medio">
+                                <label>No</label>
+                                <input type="radio" value="no">
+                            </div> -->
+                        </div><br>
+
+                        <div class="row">
+
+                            <div class="col">
+                                <label for="inputEmail4">Cantidad*</label><br>
+                                <input #cantidad formControlName="cantidad" min="0" type="number" class="form-control"
+                                    id="inputEmail4" value=1>
+                                <div class="alert alert-danger"
+                                    *ngIf="form1.get('cantidad').touched && form1.get('cantidad').invalid">
+                                    <div *ngIf="form1.get('cantidad').errors.required">cantidad es requerido.</div>
+                                    <div *ngIf="form1.get('cantidad').errors.pattern">cantidad invalida</div>
+                                </div>
+
+                            </div>
+                            <div class="col">
+                                <label for="inputEmail4">Precio*</label><br>
+                                <input #precio formControlName="precio" min="1" step="0.01" type="number"
+                                    class="form-control" id="inputEmail4">
+                                <div class="alert alert-danger"
+                                    *ngIf="form1.get('precio').touched && form1.get('precio').invalid">
+                                    <div *ngIf="form1.get('precio').errors.required">precio es requerido.</div>
+                                    <div *ngIf="form1.get('precio').errors.pattern">No se acepta mas de 2 decimales</div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <label for="inputEmail4">Especificaciones</label>
+                        <div class="row container">
+
+                            <textarea #especificaciones name="" id="" cols="100"
+                                rows="5"></textarea>
+                            <!-- <div class="alert alert-danger"
+                                *ngIf="form1.get('especificaciones').touched && form1.get('especificaciones').invalid">
+                                <div *ngIf="form1.get('especificaciones').errors.required">especificaciones es
+                                    requerido.</div>
+                                <div *ngIf="form1.get('especificaciones').errors.minlength">otro mensaje aqui</div>
+                            </div> -->
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6"><br>
+
+                        <!-- <label class="btn btn-default">
+                            <input type="file" (change)="selectFile($event)">
+                        </label>
+
+                        <button class="btn btn-success" [disabled]="!selectedFiles"
+                            (click)="upload()">Upload</button><br><br>
+
+                        <img src="{{imageurl}}" />
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/JPEG_example_flower.jpg" /> -->
+
+
+
+                        <input #fileInput formControlName="foto" type="file" accept=".jpeg, .jpg, .png" (change)="onFileChange($event)" />
+                            <div class="alert alert-danger"
+                                    *ngIf="form1.get('foto').touched && form1.get('foto').invalid">
+                                    <div *ngIf="form1.get('foto').errors.required">imagen es requerido.</div>
+                                    <!-- <div *ngIf="form1.get('foto.value').errors.pattern">formato invalido</div> -->
+                            </div>
+
+                        <img *ngIf="imageSrc" [src]="imageSrc" width="400" height="334">
+                        <br>
+
+
+
+
+
+
+                    </div>
+
+
+
+                </div>
+                <div class="row">
+
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col-auto">
+
+                        <button type="button" class="btn btn-dark">Cancelar</button>
+                        <button type="submit" [disabled]="!form1.valid" class="btn btn-dark"
+                            (click)="onSubmit(nombre.value, marca.value, tipo.value, garantia.value, cantidad.value, precio.value, especificaciones.value, fileInput)">Confirmar</button>
+
+                    </div>
+
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+
+</div>

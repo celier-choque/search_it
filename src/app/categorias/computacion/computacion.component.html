@@ -1,0 +1,45 @@
+
+<!-- <h2>Computacion</h2>
+    <tr *ngFor="let item of products">
+        <div class="container">
+            <div class="card" style="width: 23.5rem;">
+                <img class="card-img-top" src="https://via.placeholder.com/200x150.png" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Nombre Producto</h5>
+                    <p class="card-text">Precio Producto $</p>
+                </div>
+            </div>
+        </div>
+    </tr> -->
+
+
+    <ng-container
+  *ngIf="products.length > 0; then HayProducts; else NoProducts">
+</ng-container>
+
+<ng-template #HayProducts>
+  
+    
+      <h2>Computación</h2>
+      <tr *ngFor="let item of products">
+          <div class="container">
+              <div class="card" style="width: 23.5rem;">
+                  <img class="card-img-top" width="300" height="300" src={{item.image}} alt="Card image cap">
+                  <div class="card-body">
+                      <h5 class="card-title">{{item.nomprod}}</h5>
+                      <p class="card-text">{{item.precio}} Bs.</p>
+                  </div>
+              </div>
+          </div>
+      </tr>
+
+  
+</ng-template>
+<ng-template #NoProducts>
+    <div style="text-align: center; margin: 100px;">
+        <h1>
+            No hay productos Registrados
+        </h1>
+      </div>
+</ng-template>
+

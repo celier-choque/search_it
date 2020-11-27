@@ -1,0 +1,24 @@
+
+.medio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+   
+    background: #FAD26D;
+}
+
+.buttons {
+    
+    top: 1000 px; 
+    left: 120 px;
+}
+
+button{
+    margin-right: 10px;
+}
+
+
+
