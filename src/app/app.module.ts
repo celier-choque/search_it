@@ -14,6 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ElctronicoComponent } from './categorias/elctronico/elctronico.component';
 import { MostrarProductosComponent } from './mostrar-productos/mostrar-productos.component';
 import { CarouselComponent } from './carousel/carousel.component';
+import { RegisterClientComponent } from './register-client/register-client.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { CarouselComponent } from './carousel/carousel.component';
     ComputacionComponent,
     ElctronicoComponent,
     MostrarProductosComponent,
-    CarouselComponent
+    CarouselComponent,
+    RegisterClientComponent
   ],
   imports: [
     BrowserModule,

@@ -5,6 +5,7 @@ import { ElctronicoComponent } from './categorias/elctronico/elctronico.componen
 import { ElectrodomesticoComponent } from './categorias/electrodomestico/electrodomestico.component';
 import { ProductsFormComponent } from './products-form/products-form.component';
 import { MostrarProductosComponent } from './mostrar-productos/mostrar-productos.component';
+import { RegisterClientComponent } from './register-client/register-client.component';
 
 
 export const appRoutes: Routes = [
@@ -14,4 +15,5 @@ export const appRoutes: Routes = [
     {path: 'electronicos', component: ElctronicoComponent},
     {path: 'home', component: MostrarProductosComponent},
     {path: '', redirectTo:'home', pathMatch: 'full'},
+    {path: 'registro', component: RegisterClientComponent},
 ]

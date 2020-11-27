@@ -3,7 +3,7 @@ import { Categoria } from '../Models/categoria';
 import { CategoriaService } from '../services/categoria.service';
 import { BuscarService } from '../services/buscar.service';
 import { ShowProductsService } from '../services/show-products.service';
-
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
@@ -14,7 +14,7 @@ export class NavComponent implements OnInit {
   categorias: Categoria[];
   
   hide
-  constructor(private categoriaService: CategoriaService, public buscar: BuscarService, public state: ShowProductsService) { }
+  constructor(private categoriaService: CategoriaService, public buscar: BuscarService, public state: ShowProductsService ,public router:Router) { }
 
   ngOnInit(): void {
     this.getCategorias()
@@ -36,6 +36,9 @@ export class NavComponent implements OnInit {
   getText(items){
     console.log(items)
     this.buscar.buscar(items)
+  }
+  sendRegistro(){
+    this.router.navigate(['/registro'])
   }
 
   

@@ -1,0 +1,113 @@
+<div class="container">
+    <h1>Nuevo Usuario</h1>
+
+    <div class="card">
+        <div class="card-body text-dark">
+            <h5 class="card-title">Datos personales</h5>
+
+            <form [formGroup]="form1">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6 style="color:cadetblue;">Campos obligatorios (*)</h6>
+                        <label for="inputEmail4">Nombre*</label>
+                        <input #nombre formControlName="nombre" class="form-control" id="inputEmail4" pattern="">
+                        <div class="alert alert-danger"
+                            *ngIf="form1.get('nombre').touched && form1.get('nombre').invalid">
+                            <!-- <div *ngIf="form1.get('nombre') === null">nombre es requerido.</div> -->
+                            <div *ngIf="form1.get('nombre').errors.required">Nombre es requerido.</div>
+                            <div *ngIf="form1.get('nombre').errors.pattern">Formato nombre invalido.</div>
+                        </div>
+                        <label for="inputEmail4">Apellidos*</label>
+                        <input #apellidos formControlName="apellidos" class="form-control" id="inputEmail4" pattern="">
+                        <div class="alert alert-danger"
+                            *ngIf="form1.get('apellidos').touched && form1.get('apellidos').invalid">
+                            <!-- <div *ngIf="form1.get('nombre') === null">nombre es requerido.</div> -->
+                            <div *ngIf="form1.get('apellidos').errors.required">Apellidos es requerido.</div>
+                            <div *ngIf="form1.get('apellidos').errors.pattern">Formato apellido invalido .</div>
+                            <!-- <div *ngIf="form1.get('apellidos').invalid" >vacio.</div>-->
+                                      
+                        </div>
+                        <label for="inputEmail4">E-mail*</label>
+                        <input #email formControlName="email" class="form-control" id="inputEmail4" pattern="">
+                        <div class="alert alert-danger"
+                            *ngIf="form1.get('email').touched && form1.get('email').invalid">
+                            <!-- <div *ngIf="form1.get('nombre') === null">nombre es requerido.</div> -->
+                            <div *ngIf="form1.get('email').errors.required">Email es requerido.</div>
+                            <div *ngIf="form1.get('email').errors.pattern">Formato email invalido.</div>
+                        </div>  
+                       
+                        <div class="row">
+                          <div class="col">  
+                            <label for="inputEmail4">Celular*</label>
+                            <input #telefono formControlName="telefono" class="form-control" id="inputEmail4" pattern="">
+                            <div class="alert alert-danger"
+                                *ngIf="form1.get('telefono').touched && form1.get('telefono').invalid">
+                                <!-- <div *ngIf="form1.get('nombre') === null">nombre es requerido.</div> -->
+                                <div *ngIf="form1.get('telefono').errors.required">Celular es requerido.</div>
+                                <div *ngIf="form1.get('telefono').errors.pattern">Formato telefono invalido.</div>
+                            </div>
+                          </div> 
+                          <div class="col">
+                            <label for="inputEmail4">Fecha Nacimiento*</label>
+                            <input #fecha formControlName="fecha" class="form-control" id="inputEmail4" type="date"   min ="1910-01-01" max="{date}" pattern="">
+                            <div class="alert alert-danger"
+                                *ngIf="form1.get('fecha').touched && form1.get('fecha').invalid">
+                                <!-- <div *ngIf="form1.get('nombre') === null">nombre es requerido.</div> -->
+                                <div *ngIf="form1.get('fecha').errors.required">Fecha nacimiento es requerido.</div>
+                                <div *ngIf="form1.get('fecha').errors.pattern"></div>
+                            </div>
+                          </div>
+                        </div>
+                    </div> 
+                    <div class="col-md-6">
+                        <h5 class="card-title">Cuenta</h5>
+                        <label for="inputEmail4">Alias*</label>
+                        <input #alias formControlName="alias" class="form-control" id="inputEmail4" pattern="">
+                        <div class="alert alert-danger"
+                            *ngIf="form1.get('alias').touched && form1.get('alias').invalid">
+                            <!-- <div *ngIf="form1.get('nombre') === null">nombre es requerido.</div> -->
+                            <div *ngIf="form1.get('alias').errors.required">Alias es  requerido.</div>
+                            <div *ngIf="form1.get('alias').errors.pattern">Caracteres especiales no permitidos.</div>
+                        </div>
+                        <label for="inputEmail4">Contraseña*</label>
+                        <input #pass formControlName="pass" class="form-control" input type="password"  id="inputEmail4" pattern="">
+                        <div class="alert alert-danger"
+                            *ngIf="form1.get('pass').touched && form1.get('pass').invalid">
+                            <!-- <div *ngIf="form1.get('nombre') === null">nombre es requerido.</div> -->
+                            <div *ngIf="form1.get('pass').errors.required">Contraseña es requerido.</div>
+                            <div *ngIf="form1.get('pass').errors.pattern">Contraseña debe tener al menos una letra mayuscula , una minuscula ,un numero , los caracteres especiales permitidos son # ? ! @ $ % ^ & *-  y una longitud de entre 8 y 20 caracteres.</div>
+                            
+                        </div>
+                        <label for="inputEmail4">Confirmar contraseña*</label>
+                        <input #confirpass formControlName="confirpass" class="form-control" input type="password"  id="inputEmail4" pattern="">
+                        <div class="alert alert-danger"
+                            *ngIf="form1.get('confirpass').touched && form1.get('confirpass').invalid">
+                            <!-- <div *ngIf="form1.get('nombre') === null">nombre es requerido.</div> -->
+                            <div *ngIf="form1.get('confirpass').errors.required">Confirmar contraseña es requerido.</div>
+                            <div *ngIf="form1.get('confirpass').errors.pattern">Contraseña debe tener al menos una letra mayuscula , una minuscula ,un numero ,  los caracteres especiales permitidos son # ? ! @ $ % ^ & *- y una longitud de entre 8 y 20 caracteres.</div>
+                        </div> 
+
+
+
+                    </div>
+                </div> 
+                <div class="row">
+
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col-auto">
+
+                        <button type="button" class="btn btn-dark"  (click)="cancel()">Cancelar</button>
+                        <button type="submit" [disabled]="!form1.valid" class="btn btn-dark" 
+                            (click)="onSubmit(nombre.value, apellidos.value, email.value, telefono.value, fecha.value, alias.value, pass.value, confirpass.value)">Confirmar</button>
+                              
+                    </div>
+                    
+
+                </div>
+            </form>
+        </div> 
+    </div>  
+</div> 
+
+
