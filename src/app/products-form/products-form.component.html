@@ -10,7 +10,7 @@
                     <div class="col-md-6">
                         <h6 style="color:cadetblue;">campos obligatorios (*)</h6>
                         <label for="inputEmail4">Nombre*</label>
-                        <input #nombre formControlName="nombre" class="form-control" id="inputEmail4" pattern="">
+                        <input #nombre formControlName="nombre" class="form-control" pattern="">
                         <div class="alert alert-danger"
                             *ngIf="form1.get('nombre').touched && form1.get('nombre').invalid">
                             <!-- <div *ngIf="form1.get('nombre') === null">nombre es requerido.</div> -->
@@ -19,7 +19,7 @@
                         </div>
 
                         <label for="inputEmail4">Marca*</label>
-                        <input #marca formControlName="marca" class="form-control" id="inputEmail4">
+                        <input #marca formControlName="marca" class="form-control">
                         <div class="alert alert-danger"
                             *ngIf="form1.get('marca').touched && form1.get('marca').invalid">
                             <div *ngIf="form1.get('marca').errors.required">marca es requerido.</div>
@@ -76,7 +76,7 @@
                             <div class="col">
                                 <label for="inputEmail4">Cantidad*</label><br>
                                 <input #cantidad formControlName="cantidad" min="0" type="number" class="form-control"
-                                    id="inputEmail4" value=1>
+                                    value=1>
                                 <div class="alert alert-danger"
                                     *ngIf="form1.get('cantidad').touched && form1.get('cantidad').invalid">
                                     <div *ngIf="form1.get('cantidad').errors.required">cantidad es requerido.</div>
@@ -87,7 +87,7 @@
                             <div class="col">
                                 <label for="inputEmail4">Precio*</label><br>
                                 <input #precio formControlName="precio" min="1" step="0.01" type="number"
-                                    class="form-control" id="inputEmail4">
+                                    class="form-control">
                                 <div class="alert alert-danger"
                                     *ngIf="form1.get('precio').touched && form1.get('precio').invalid">
                                     <div *ngIf="form1.get('precio').errors.required">precio es requerido.</div>

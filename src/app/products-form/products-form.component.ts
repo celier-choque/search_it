@@ -22,12 +22,12 @@ export class ProductsFormComponent implements OnInit {
   form1 = new FormGroup({
     'nombre': new FormControl('', [
       Validators.required,
-      Validators.pattern('[A-Za-z][A-Za-z0-9 ]*'),
+      Validators.pattern('[A-Za-z][A-Za-z ]*'),
       //Validators.pattern('[a-zA-Z0-9 ]*')
     ]),
     'marca': new FormControl('', [
       Validators.required,
-      Validators.pattern('[A-Za-z0-9][A-Za-z0-9 ]*')
+      Validators.pattern('[A-Za-z0-9][A-Za-z ]*')
     ]),
     'tipo': new FormControl('', [
       Validators.required,
