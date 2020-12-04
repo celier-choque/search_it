@@ -7,6 +7,7 @@ import {Router} from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import * as CryptoJS from 'crypto-js';
 import { AuthService } from '../services/auth.service';
+import { Cliente } from '../Models/cliente';
 
 export class Login{
   alias:string;
@@ -31,6 +32,7 @@ export class NavComponent implements OnInit {
   request: string;
   responce: string;
   //
+  usuarioActual:Cliente[]
 
   message = "";
   textToConvert: string;
@@ -38,7 +40,7 @@ export class NavComponent implements OnInit {
   form1 = new FormGroup({
     'username': new FormControl('', [
       Validators.required,
-      Validators.pattern('[A-Za-z][A-Za-z ]*'),
+      
     ]),
     'password': new FormControl('',[
       Validators.required,
@@ -52,8 +54,10 @@ export class NavComponent implements OnInit {
   categorias: Categoria[];
 
   model: any = {username:'', password:this.encrypted};
-  
+  sesion=false
+
   hide
+  obtenido={}
   constructor(private loginService: AuthService, private categoriaService: CategoriaService, public buscar: BuscarService, public state: ShowProductsService ,public router:Router) 
   {
     
@@ -64,33 +68,58 @@ export class NavComponent implements OnInit {
     
   }
 
+  // login(){
+    
+  //   var login = new Login(this.form1.value.username, this.encrypted.toString())
+  //   var log={
+  //     "alias": this.form1.value.username,
+  //     "password": this.form1.value.password
+  //   }
+  //   this.login2()
+  //   this.loginService.loginPost(log).subscribe(      
+  //     item=>(this.usuarioActual=item as Cliente[],
+  //       console.log(this.usuarioActual.length),
+  //       this.usuarioActual.length==1? this.status=true: alert("alias o password INCORRECTOS")
+  //       )
+  //   )
+  //   this.form1.reset()
+  // }
+
   login(){
-    this.status=true;
-    //console.log(this.model)
-    //console.log("hhh",this.form1.value.username)
-    //console.log(this.model)
-    this.encript()
-    var login = new Login(this.form1.value.username, this.encrypted.toString())
     var log={
       "alias": this.form1.value.username,
       "password": this.form1.value.password
     }
-    console.log(log)
-    this.loginService.loginPost(log).subscribe(
-      item => console.log("respuesta",item)
+    this.loginService.login(log).subscribe(next => {
+      console.log("bien")
+      this.status=true
+      this.loggedIn()
+    }, error => {
+      console.log("mal")
+      alert("alias o password INCORRECTOS")
+    }
     )
   }
+
   
   public onSave() {
     this.closebutton.nativeElement.click();
   }
 
   loggedIn(){
-    
+    const alias = localStorage.getItem('user')
+    console.log("sesion",!!alias)
+    return !!alias
+  }
+
+  sesionIniciada(){
+
   }
 
   logout(){
     this.status=false;
+    localStorage.removeItem('user');
+    console.log("logged out")
   }
 
 
@@ -106,6 +135,10 @@ export class NavComponent implements OnInit {
   }
   sendRegistro(){
     this.router.navigate(['/registro'])
+  }
+
+  goHome(){
+    this.router.navigate(['/home'])
   }
 
   encript(){

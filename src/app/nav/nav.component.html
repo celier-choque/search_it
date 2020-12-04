@@ -3,7 +3,7 @@
 <nav class="navbar navbar-expand-md navbar-light bg-info" role="navigation">
     <div class="container">
         
-        <a class="navbar-brand title" href="#">Search It!</a>
+        <a class="navbar-brand title" (click)="goHome()">Search It!</a>
         <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
             &#9776;
         </button>
@@ -46,7 +46,7 @@
                         <div class="dropdown-menu show">
                             <a class="dropdown-item" href="#"><i class="fa fa-user"></i> Perfil</a>
                             <div class="dropdown-divider"></div>
-                            <a onclick="logout()" class="dropdown-item" href="#"><i class="fa fa-sign-out"></i>
+                            <a (click)="logout()" class="dropdown-item" href="/"><i class="fa fa-sign-out"></i>
                                 logout</a>
                         </div>
                     </div>
@@ -63,22 +63,22 @@
                                         class="form-control form-control-sm" type="text" required="" required=""
                                         name="username">
 
-                                    <div class="alert alert-danger"
+                                    <!-- <div class="alert alert-danger"
                                         *ngIf="form1.get('username').touched && form1.get('username').invalid">
                                         <div *ngIf="form1.get('username').errors.required">alias es requerido.</div>
-                                        <div *ngIf="form1.get('username').errors.pattern">garantia invalida</div>
-                                    </div>
+                                        
+                                    </div> -->
                                 </div>
                                 <div class="form-group">
                                     <input #password id="passwordInput" type="password" formControlName="password"
                                         placeholder="Password" class="form-control form-control-sm" required=""
                                         name="password">
 
-                                    <div class="alert alert-danger"
+                                    <!-- <div class="alert alert-danger"
                                         *ngIf="form1.get('password').touched && form1.get('password').invalid">
                                         <div *ngIf="form1.get('password').errors.required">password es requerido.</div>
                                         <div *ngIf="form1.get('password').errors.pattern">password invalido</div>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="form-group">
                                     <button [disabled]="!form1.valid" type="submit"
